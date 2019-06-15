@@ -7,8 +7,9 @@ typedef unsigned int position_t;
 struct Move{
     unsigned int from:8;
     unsigned int to:8;
-    unsigned int captured:6;
-    unsigned int promoted:6;
+    unsigned int captured:5;
+    unsigned int moved:5;
+    unsigned int promoted:5;
 };
 
 struct Board;
