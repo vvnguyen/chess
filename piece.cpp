@@ -284,7 +284,7 @@ void Bishop::generate_moves(QVector<Move>& moves, Board& board)
     column_to = column-1;
     row_to = row+1;
     move_to = on + 7;
-    while(column_to>0 && row_to<8 && board.fields[move_to]==nullptr){
+    while(column_to>=0 && row_to<8 && board.fields[move_to]==nullptr){
         Move m;
         m.from = on;
         m.to = move_to;
@@ -295,7 +295,7 @@ void Bishop::generate_moves(QVector<Move>& moves, Board& board)
         --column_to;
         ++row_to;
     }
-    if(column_to>0 && row_to<8 && board.fields[move_to]->color!=board.fields[on]->color){
+    if(column_to>=0 && row_to<8 && board.fields[move_to]->color!=board.fields[on]->color){
         //opposite piece
         Move m;
         m.from = on;
@@ -308,7 +308,7 @@ void Bishop::generate_moves(QVector<Move>& moves, Board& board)
     column_to = column+1;
     row_to = row-1;
     move_to = on -7;
-    while(column_to<8 && row_to>0 && board.fields[move_to]==nullptr){
+    while(column_to<8 && row_to>=0 && board.fields[move_to]==nullptr){
         Move m;
         m.from = on;
         m.to = move_to;
@@ -319,7 +319,7 @@ void Bishop::generate_moves(QVector<Move>& moves, Board& board)
         ++column_to;
         --row_to;
     }
-    if(column_to<8 && row_to>0 && board.fields[move_to]->color!=board.fields[on]->color){
+    if(column_to<8 && row_to>=0 && board.fields[move_to]->color!=board.fields[on]->color){
         //opposite piece
         Move m;
         m.from = on;
@@ -332,7 +332,7 @@ void Bishop::generate_moves(QVector<Move>& moves, Board& board)
     column_to = column-1;
     row_to = row-1;
     move_to = on -9;
-    while(column_to>0 && row_to>0 && board.fields[move_to]==nullptr){
+    while(column_to>=0 && row_to>=0 && board.fields[move_to]==nullptr){
         Move m;
         m.from = on;
         m.to = move_to;
@@ -343,7 +343,7 @@ void Bishop::generate_moves(QVector<Move>& moves, Board& board)
         --column_to;
         --row_to;
     }
-    if(column_to>0 && row_to>0 && board.fields[move_to]->color!=board.fields[on]->color){
+    if(column_to>=0 && row_to>=0 && board.fields[move_to]->color!=board.fields[on]->color){
         //opposite piece
         Move m;
         m.from = on;
@@ -356,7 +356,98 @@ void Bishop::generate_moves(QVector<Move>& moves, Board& board)
 
 void Rook::generate_moves(QVector<Move>& moves, Board& board)
 {
+    int column = on%8;
+    int row = on/8;
 
+    //up
+    int column_to = column;
+    int row_to = row+1;
+    unsigned int move_to = on + 8;
+    while(row_to<8 && board.fields[move_to]==nullptr){
+        Move m;
+        m.from = on;
+        m.to = move_to;
+        m.captured = 0;
+        m.promoted = 0;
+        moves.push_back(m);
+        move_to+=8;
+        ++row_to;
+    }
+    if(row_to<8 && board.fields[move_to]->color!=board.fields[on]->color){
+        //opposite piece
+        Move m;
+        m.from = on;
+        m.to = move_to;
+        m.captured = board.fields[move_to]->value;
+        m.promoted = 0;
+        moves.push_back(m);
+    }
+    //down
+    move_to = on - 8;
+    row_to = row-1;
+    while(row_to>=0 && board.fields[move_to]==nullptr){
+        Move m;
+        m.from = on;
+        m.to = move_to;
+        m.captured = 0;
+        m.promoted = 0;
+        moves.push_back(m);
+        move_to-=8;
+        --row_to;
+    }
+    if(row_to>=0 && board.fields[move_to]->color!=board.fields[on]->color){
+        //opposite piece
+        Move m;
+        m.from = on;
+        m.to = move_to;
+        m.captured = board.fields[move_to]->value;
+        m.promoted = 0;
+        moves.push_back(m);
+    }
+    //left
+    column_to = column-1;
+    move_to = on-1;
+    while(column_to>=0 && board.fields[move_to]==nullptr){
+        Move m;
+        m.from = on;
+        m.to = move_to;
+        m.captured = 0;
+        m.promoted = 0;
+        moves.push_back(m);
+        move_to-=1;
+        --column_to;
+    }
+    if(column_to>=0 && board.fields[move_to]->color!=board.fields[on]->color){
+        //opposite piece
+        Move m;
+        m.from = on;
+        m.to = move_to;
+        m.captured = board.fields[move_to]->value;
+        m.promoted = 0;
+        moves.push_back(m);
+    }
+    //right
+    column_to = column+1;
+    move_to = on+1;
+    while(column_to<8 && board.fields[move_to]==nullptr){
+        Move m;
+        m.from = on;
+        m.to = move_to;
+        m.captured = 0;
+        m.promoted = 0;
+        moves.push_back(m);
+        move_to+=1;
+        ++column_to;
+    }
+    if(column_to<8 && board.fields[move_to]->color!=board.fields[on]->color){
+        //opposite piece
+        Move m;
+        m.from = on;
+        m.to = move_to;
+        m.captured = board.fields[move_to]->value;
+        m.promoted = 0;
+        moves.push_back(m);
+    }
 }
 
 void King::generate_moves(QVector<Move>& moves, Board& board)
