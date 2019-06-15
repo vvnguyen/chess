@@ -21,18 +21,18 @@ MainWindow::MainWindow(QWidget *parent) :
     m_view->setFieldSize(QSize(50,50));
     layout()->setSizeConstraint(QLayout::SetFixedSize);
 
-    m_view->setPiece('P', QIcon("F:/white_pawn.png")); // pawn
-    m_view->setPiece('K', QIcon("F:/white_king.png")); // king
-    m_view->setPiece('Q', QIcon("F:/white_queen.png")); //
-    m_view->setPiece('R', QIcon("F:/white_rook.png")); // rook
-    m_view->setPiece('N', QIcon("F:/white_knight.png")); // knight
-    m_view->setPiece('B', QIcon("F:/white_bishop.png")); // bishop
-    m_view->setPiece('p', QIcon("F:/black_pawn.png")); // pawn
-    m_view->setPiece('k', QIcon("F:/black_king.png")); // king
-    m_view->setPiece('q', QIcon("F:/black_queen.png")); // queen
-    m_view->setPiece('r', QIcon("F:/black_rook.png")); // rook
-    m_view->setPiece('n', QIcon("F:/black_knight.png")); // knight
-    m_view->setPiece('b', QIcon("F:/black_bishop.png")); // bishop
+    m_view->setPiece('P', QIcon(":/white_pawn.png")); // pawn
+    m_view->setPiece('K', QIcon(":/white_king.png")); // king
+    m_view->setPiece('Q', QIcon(":/white_queen.png")); //
+    m_view->setPiece('R', QIcon(":/white_rook.png")); // rook
+    m_view->setPiece('N', QIcon(":/white_knight.png")); // knight
+    m_view->setPiece('B', QIcon(":/white_bishop.png")); // bishop
+    m_view->setPiece('p', QIcon(":/black_pawn.png")); // pawn
+    m_view->setPiece('k', QIcon(":/black_king.png")); // king
+    m_view->setPiece('q', QIcon(":/black_queen.png")); // queen
+    m_view->setPiece('r', QIcon(":/black_rook.png")); // rook
+    m_view->setPiece('n', QIcon(":/black_knight.png")); // knight
+    m_view->setPiece('b', QIcon(":/black_bishop.png")); // bishop
 
     connect(m_view, SIGNAL(clicked(QPoint)),
     this, SLOT(viewClicked(QPoint)));
