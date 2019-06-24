@@ -452,7 +452,152 @@ void Rook::generate_moves(QVector<Move>& moves, Board& board)
 
 void King::generate_moves(QVector<Move>& moves, Board& board)
 {
-
+    int column = on%8;
+    int row = on/8;
+    if(column>0){
+        if(row>0){
+            unsigned int move_to = on-9;
+            if( board.fields[move_to]==nullptr ){
+                Move m;
+                m.from = on;
+                m.to = move_to;
+                m.captured = 0;
+                m.promoted = 0;
+                moves.push_back(m);
+            } else if(board.fields[move_to]->color!=board.fields[on]->color){
+                Move m;
+                m.from = on;
+                m.to = move_to;
+                m.captured = board.fields[move_to]->value;
+                m.promoted = 0;
+            }
+        }
+    }
+    if(row>0){
+        unsigned int move_to = on-8;
+        if( board.fields[move_to]==nullptr ){
+            Move m;
+            m.from = on;
+            m.to = move_to;
+            m.captured = 0;
+            m.promoted = 0;
+            moves.push_back(m);
+        } else if(board.fields[move_to]->color!=board.fields[on]->color){
+            Move m;
+            m.from = on;
+            m.to = move_to;
+            m.captured = board.fields[move_to]->value;
+            m.promoted = 0;
+        }
+    }
+    if(row>0){
+        if(column<7){
+            unsigned int move_to = on-7;
+            if( board.fields[move_to]==nullptr ){
+                Move m;
+                m.from = on;
+                m.to = move_to;
+                m.captured = 0;
+                m.promoted = 0;
+                moves.push_back(m);
+            } else if(board.fields[move_to]->color!=board.fields[on]->color){
+                Move m;
+                m.from = on;
+                m.to = move_to;
+                m.captured = board.fields[move_to]->value;
+                m.promoted = 0;
+            }
+        }
+    }
+    if(column<7){
+        unsigned int move_to = on+1;
+        if( board.fields[move_to]==nullptr ){
+            Move m;
+            m.from = on;
+            m.to = move_to;
+            m.captured = 0;
+            m.promoted = 0;
+            moves.push_back(m);
+        } else if(board.fields[move_to]->color!=board.fields[on]->color){
+            Move m;
+            m.from = on;
+            m.to = move_to;
+            m.captured = board.fields[move_to]->value;
+            m.promoted = 0;
+        }
+    }
+    if(column>0){
+        unsigned int move_to = on-1;
+        if( board.fields[move_to]==nullptr ){
+            Move m;
+            m.from = on;
+            m.to = move_to;
+            m.captured = 0;
+            m.promoted = 0;
+            moves.push_back(m);
+        } else if(board.fields[move_to]->color!=board.fields[on]->color){
+            Move m;
+            m.from = on;
+            m.to = move_to;
+            m.captured = board.fields[move_to]->value;
+            m.promoted = 0;
+        }
+    }
+    if(row<7){
+        unsigned int move_to = on+8;
+        if( board.fields[move_to]==nullptr ){
+            Move m;
+            m.from = on;
+            m.to = move_to;
+            m.captured = 0;
+            m.promoted = 0;
+            moves.push_back(m);
+        } else if(board.fields[move_to]->color!=board.fields[on]->color){
+            Move m;
+            m.from = on;
+            m.to = move_to;
+            m.captured = board.fields[move_to]->value;
+            m.promoted = 0;
+        }
+    }
+    if(row<7){
+        if(column>0){
+            unsigned int move_to = on+7;
+            if( board.fields[move_to]==nullptr ){
+                Move m;
+                m.from = on;
+                m.to = move_to;
+                m.captured = 0;
+                m.promoted = 0;
+                moves.push_back(m);
+            } else if(board.fields[move_to]->color!=board.fields[on]->color){
+                Move m;
+                m.from = on;
+                m.to = move_to;
+                m.captured = board.fields[move_to]->value;
+                m.promoted = 0;
+            }
+        }
+    }
+    if(row<7){
+        if(column<7){
+            unsigned int move_to = on+9;
+            if( board.fields[move_to]==nullptr ){
+                Move m;
+                m.from = on;
+                m.to = move_to;
+                m.captured = 0;
+                m.promoted = 0;
+                moves.push_back(m);
+            } else if(board.fields[move_to]->color!=board.fields[on]->color){
+                Move m;
+                m.from = on;
+                m.to = move_to;
+                m.captured = board.fields[move_to]->value;
+                m.promoted = 0;
+            }
+        }
+    }
 }
 
 void Queen::generate_moves(QVector<Move>& moves, Board& board)
@@ -646,3 +791,4 @@ void Queen::generate_moves(QVector<Move>& moves, Board& board)
             moves.push_back(m);
         }
 }
+

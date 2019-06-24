@@ -25,16 +25,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        alphabeta.cpp \
         chessboard.cpp \
         chessview.cpp \
+        evaluate.cpp \
         gamealgorithm.cpp \
         main.cpp \
         mainwindow.cpp \
         piece.cpp
 
 HEADERS += \
+        alphabeta.h \
         chessboard.h \
         chessview.h \
+        evaluate.h \
         gamealgorithm.h \
         mainwindow.h \
         piece.h

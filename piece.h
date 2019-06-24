@@ -21,6 +21,7 @@ struct Piece
     unsigned int value;
     position_t on;
     color_t color;
+    bool in_game;
     virtual void generate_moves(QVector<Move>& moves, Board& board)=0;
     virtual ~Piece()=0;
 }Piece;
@@ -31,33 +32,50 @@ struct Board
     Piece* fields[64];
 }Board;
 
+typedef
+struct GameState{
+    Board b;
+    bool current_size;
+    QVector<Piece*> white;
+    QVector<Piece*> black;
+    void make_move(struct Move* m);
+    void undo_move(struct Move* m);
+}GameState;
+
 struct Pawn: Piece
 {
+    static const int pawn_value = 10;
     void generate_moves(QVector<Move>& moves, Board& board);
 };
 
 struct Knight: Piece
 {
+    static const int knight_value = 30;
     void generate_moves(QVector<Move>& moves, Board& board);
 };
 
 struct Bishop: Piece
 {
+    static const int bishop_value = 30;
     void generate_moves(QVector<Move>& moves, Board& board);
 };
 
 struct Rook: Piece
 {
+    static const int rook_value = 50;
     void generate_moves(QVector<Move>& moves, Board& board);
 };
 
 struct King: Piece
 {
+    static const int king_value = 100;
     void generate_moves(QVector<Move>& moves, Board& board);
+    bool is_safe(Board& board);
 };
 
 struct Queen: Piece
 {
+    static const int queen_value = 90;
     void generate_moves(QVector<Move>& moves, Board& board);
 };
 
