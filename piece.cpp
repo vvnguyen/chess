@@ -249,6 +249,52 @@ void Knight::generate_moves(QVector<Move>& moves, Board& board)
             }
         }
     }
+
+    //two right one up
+    if((column<6)&&(row<7)){
+        auto move_to = on +10;
+        if(board.fields[move_to]==nullptr){
+            Move m;
+            m.from = on;
+            m.to = move_to;
+            m.captured = 0;
+            m.promoted = 0;
+            moves.push_back(m);
+        } else {
+            if(board.fields[move_to]->color!=board.fields[on]->color){
+                //opposite piece
+                Move m;
+                m.from = on;
+                m.to = move_to;
+                m.captured = board.fields[move_to]->value;
+                m.promoted = 0;
+                moves.push_back(m);
+            }
+        }
+    }
+
+    //one right two up
+    if((column<6)&&(row<6)){
+        auto move_to = on +18;
+        if(board.fields[move_to]==nullptr){
+            Move m;
+            m.from = on;
+            m.to = move_to;
+            m.captured = 0;
+            m.promoted = 0;
+            moves.push_back(m);
+        } else {
+            if(board.fields[move_to]->color!=board.fields[on]->color){
+                //opposite piece
+                Move m;
+                m.from = on;
+                m.to = move_to;
+                m.captured = board.fields[move_to]->value;
+                m.promoted = 0;
+                moves.push_back(m);
+            }
+        }
+    }
 }
 
 void Bishop::generate_moves(QVector<Move>& moves, Board& board)
