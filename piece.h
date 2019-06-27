@@ -40,6 +40,7 @@ struct GameState{
     QVector<Piece*> black;
     void make_move(struct Move* m);
     void undo_move(struct Move* m);
+    void init();
 }GameState;
 
 struct Pawn: Piece
