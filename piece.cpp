@@ -874,7 +874,7 @@ void GameState::init(){
     white[7] = new Pawn(); white[7]->on = 15; b.fields[15]=white[7]; white[7]->id=7;
     white[8] = new Knight(); white[8]->on = 1; b.fields[1]=white[8]; white[8]->id=8;
     white[9] = new Knight(); white[9]->on = 6; b.fields[6]=white[9]; white[9]->id=9;
-    white[10] = new Bishop(); white[10]->on = 2; b.fields[2]=white[10]; white[10]->10;
+    white[10] = new Bishop(); white[10]->on = 2; b.fields[2]=white[10]; white[10]->id=10;
     white[11] = new Bishop(); white[11]->on = 5; b.fields[5]=white[11]; white[11]->id=11;
     white[12] = new Rook(); white[12]->on = 0; b.fields[0]=white[12]; white[12]->id=12;
     white[13] = new Rook(); white[13]->on = 7; b.fields[7]=white[13]; white[13]->id=13;
@@ -899,7 +899,7 @@ void GameState::init(){
     black[7] = new Pawn(); black[7]->on = 55; b.fields[15]=black[7]; black[7]->id=7;
     black[8] = new Knight(); black[8]->on = 57; b.fields[1]=black[8]; black[8]->id=8;
     black[9] = new Knight(); black[9]->on = 62; b.fields[6]=black[9]; black[9]->id=9;
-    black[10] = new Bishop(); black[10]->on = 58; b.fields[2]=black[10]; black[10]->10;
+    black[10] = new Bishop(); black[10]->on = 58; b.fields[2]=black[10]; black[10]->id=10;
     black[11] = new Bishop(); black[11]->on = 61; b.fields[5]=black[11]; black[11]->id=11;
     black[12] = new Rook(); black[12]->on = 56; b.fields[0]=black[12]; black[12]->id=12;
     black[13] = new Rook(); black[13]->on = 63; b.fields[7]=black[13]; black[13]->id=13;
