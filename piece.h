@@ -18,7 +18,7 @@ typedef
 struct Piece
 {
     enum color_t{black=0,white=1};
-    unsigned int value;
+    unsigned int id;
     position_t on;
     color_t color;
     bool in_game;
@@ -35,12 +35,17 @@ struct Board
 typedef
 struct GameState{
     Board b;
-    bool current_size;
+    bool current_side;
     QVector<Piece*> white;
     QVector<Piece*> black;
     void make_move(struct Move* m);
     void undo_move(struct Move* m);
+private:
     void init();
+    void clean();
+public:
+    GameState() {init();}
+    ~GameState(){clean()};
 }GameState;
 
 struct Pawn: Piece
