@@ -761,7 +761,7 @@ void Queen::generate_moves(QVector<Move>& moves, Board& board)
             move_to+=8;
             ++row_to;
         }
-        if(row_to<8 && board.fields[move_to]->color!=board.fields[on]->color){
+        if(row_to<8 && board.fields[move_to] && board.fields[move_to]->color!=board.fields[on]->color){
             //opposite piece
             Move m;
             m.from = on;
@@ -783,7 +783,7 @@ void Queen::generate_moves(QVector<Move>& moves, Board& board)
             move_to-=8;
             --row_to;
         }
-        if(row_to>=0 && board.fields[move_to]->color!=board.fields[on]->color){
+        if(row_to>=0 && board.fields[move_to] && board.fields[move_to]->color!=board.fields[on]->color){
             //opposite piece
             Move m;
             m.from = on;
@@ -795,6 +795,7 @@ void Queen::generate_moves(QVector<Move>& moves, Board& board)
         //left
         column_to = column-1;
         move_to = on-1;
+        row_to = row;
         while(column_to>=0 && board.fields[move_to]==nullptr){
             Move m;
             m.from = on;
@@ -805,7 +806,7 @@ void Queen::generate_moves(QVector<Move>& moves, Board& board)
             move_to-=1;
             --column_to;
         }
-        if(column_to>=0 && board.fields[move_to]->color!=board.fields[on]->color){
+        if(column_to>=0 && board.fields[move_to] && board.fields[move_to]->color!=board.fields[on]->color){
             //opposite piece
             Move m;
             m.from = on;
@@ -827,7 +828,7 @@ void Queen::generate_moves(QVector<Move>& moves, Board& board)
             move_to+=1;
             ++column_to;
         }
-        if(column_to<8 && board.fields[move_to]->color!=board.fields[on]->color){
+        if(column_to<8 && board.fields[move_to] && board.fields[move_to]->color!=board.fields[on]->color){
             //opposite piece
             Move m;
             m.from = on;
@@ -878,8 +879,8 @@ void GameState::init(){
     white[11] = new Bishop(); white[11]->on = 5; b.fields[5]=white[11]; white[11]->id=11;
     white[12] = new Rook(); white[12]->on = 0; b.fields[0]=white[12]; white[12]->id=12;
     white[13] = new Rook(); white[13]->on = 7; b.fields[7]=white[13]; white[13]->id=13;
-    white[14] = new Queen(); white[14]->on = 4; b.fields[4]=white[14]; white[14]->id=14;
-    white[15] = new King(); white[15]->on = 5; b.fields[5]=white[15]; white[15]->id=15;
+    white[14] = new Queen(); white[14]->on = 3; b.fields[3]=white[14]; white[14]->id=14;
+    white[15] = new King(); white[15]->on = 4; b.fields[4]=white[15]; white[15]->id=15;
 
     for(int i=0;i<16;++i){
         white[i]->in_game=true;
@@ -889,22 +890,22 @@ void GameState::init(){
     for(int field =16;field<48;++field){
         b.fields[field] = nullptr;//empty fields in middle
     }
-    black[0] = new Pawn(); black[0]->on = 48; b.fields[8]=black[0]; black[0]->id=0;
-    black[1] = new Pawn(); black[1]->on = 49; b.fields[9]=black[1]; black[1]->id=1;
-    black[2] = new Pawn(); black[2]->on = 50; b.fields[10]=black[2]; black[2]->id=2;
-    black[3] = new Pawn(); black[3]->on = 51; b.fields[11]=black[3]; black[3]->id=3;
-    black[4] = new Pawn(); black[4]->on = 52; b.fields[12]=black[4]; black[4]->id=4;
-    black[5] = new Pawn(); black[5]->on = 53; b.fields[13]=black[5]; black[5]->id=5;
-    black[6] = new Pawn(); black[6]->on = 54; b.fields[14]=black[6]; black[6]->id=6;
-    black[7] = new Pawn(); black[7]->on = 55; b.fields[15]=black[7]; black[7]->id=7;
-    black[8] = new Knight(); black[8]->on = 57; b.fields[1]=black[8]; black[8]->id=8;
-    black[9] = new Knight(); black[9]->on = 62; b.fields[6]=black[9]; black[9]->id=9;
-    black[10] = new Bishop(); black[10]->on = 58; b.fields[2]=black[10]; black[10]->id=10;
-    black[11] = new Bishop(); black[11]->on = 61; b.fields[5]=black[11]; black[11]->id=11;
-    black[12] = new Rook(); black[12]->on = 56; b.fields[0]=black[12]; black[12]->id=12;
-    black[13] = new Rook(); black[13]->on = 63; b.fields[7]=black[13]; black[13]->id=13;
-    black[14] = new Queen(); black[14]->on = 59; b.fields[4]=black[14]; black[14]->id=14;
-    black[15] = new King(); black[15]->on = 60; b.fields[5]=black[15]; black[15]->id=15;
+    black[0] = new Pawn(); black[0]->on = 48; b.fields[48]=black[0]; black[0]->id=0;
+    black[1] = new Pawn(); black[1]->on = 49; b.fields[49]=black[1]; black[1]->id=1;
+    black[2] = new Pawn(); black[2]->on = 50; b.fields[50]=black[2]; black[2]->id=2;
+    black[3] = new Pawn(); black[3]->on = 51; b.fields[51]=black[3]; black[3]->id=3;
+    black[4] = new Pawn(); black[4]->on = 52; b.fields[52]=black[4]; black[4]->id=4;
+    black[5] = new Pawn(); black[5]->on = 53; b.fields[53]=black[5]; black[5]->id=5;
+    black[6] = new Pawn(); black[6]->on = 54; b.fields[54]=black[6]; black[6]->id=6;
+    black[7] = new Pawn(); black[7]->on = 55; b.fields[55]=black[7]; black[7]->id=7;
+    black[8] = new Knight(); black[8]->on = 57; b.fields[57]=black[8]; black[8]->id=8;
+    black[9] = new Knight(); black[9]->on = 62; b.fields[62]=black[9]; black[9]->id=9;
+    black[10] = new Bishop(); black[10]->on = 58; b.fields[58]=black[10]; black[10]->id=10;
+    black[11] = new Bishop(); black[11]->on = 61; b.fields[61]=black[11]; black[11]->id=11;
+    black[12] = new Rook(); black[12]->on = 56; b.fields[56]=black[12]; black[12]->id=12;
+    black[13] = new Rook(); black[13]->on = 63; b.fields[63]=black[13]; black[13]->id=13;
+    black[14] = new Queen(); black[14]->on = 59; b.fields[59]=black[14]; black[14]->id=14;
+    black[15] = new King(); black[15]->on = 60; b.fields[60]=black[15]; black[15]->id=15;
     for(int i=0;i<16;++i){
         black[i]->in_game=true;
         black[i]->color=Piece::black;

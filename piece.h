@@ -22,6 +22,7 @@ struct Piece
     position_t on;
     color_t color;
     bool in_game;
+    int value;
     virtual void generate_moves(QVector<Move>& moves, Board& board)=0;
     virtual ~Piece()=0;
 }Piece;
@@ -45,7 +46,7 @@ private:
     void clean();
 public:
     GameState() {init();}
-    ~GameState(){clean()};
+    ~GameState(){clean();}
 }GameState;
 
 struct Pawn: Piece

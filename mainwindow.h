@@ -2,9 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QPoint>
 #include "chessview.h"
 #include "gamealgorithm.h"
-#include <QPoint>
+#include "piece.h"
 
 namespace Ui {
 class MainWindow;
@@ -22,7 +23,7 @@ private:
     ChessView *m_view;
     GameAlgorithm *m_algorithm;
     QPoint m_clickPoint;
-
+    GameState g;
 public slots:
     void viewClicked(const QPoint &);
 };

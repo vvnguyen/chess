@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "piece.h"
+#include "alphabeta.h"
 #include <QLayout>
 #include <QIcon>
 #include <QMap>
@@ -53,6 +55,10 @@ void MainWindow::viewClicked(const QPoint &field)
              m_clickPoint.x(), m_clickPoint.y(),
             field.x(), field.y()
         );
+
+        //generate black moves
+        Move m;
+        alphabeta::find_best_move(&g,&m);
     }
     m_clickPoint = QPoint();
     }
