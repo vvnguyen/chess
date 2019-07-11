@@ -843,12 +843,19 @@ void GameState::make_move(Move* m){
     if(m->captured){
         this->b.fields[m->to]->in_game=false;
     }
+    if(this->b.fields[m->from]==nullptr){
+        return;
+    }
     this->b.fields[m->to]=this->b.fields[m->from];
     this->b.fields[m->from]=nullptr;
     this->b.fields[m->to]->on=m->to;
+    done.push_back(*m);
 }
 
 void GameState::undo_move(Move* m){
+    if(b.fields[m->to]==nullptr){
+        return;
+    }
     auto c = this->b.fields[m->to]->color;
     this->b.fields[m->from] = this->b.fields[m->to];
     this->b.fields[m->from]->on = m->from;
@@ -856,10 +863,13 @@ void GameState::undo_move(Move* m){
     if(m->captured){
         if(c==Piece::white){
             black[m->captured]->in_game=true;
+            this->b.fields[m->to] = black[m->captured];
         }else {
             white[m->captured]->in_game=true;
+            this->b.fields[m->to] = white[m->captured];
         }
     }
+    done.pop_back();
 }
 
 void GameState::init(){

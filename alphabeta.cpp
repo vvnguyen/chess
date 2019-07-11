@@ -64,8 +64,7 @@ void alphabeta::find_best_move(GameState* game, Move* best_move){
     for(auto move: moves){
         Move m=move;
         game->make_move(&m);
-        int score = 10;
-        //auto score = alphabeta::max(alpha,beta,6,game);not working properly
+        auto score = alphabeta::max(alpha,beta,6,game);//not working properly
         if(score<min){
             min = score;
             index_best_move = i;

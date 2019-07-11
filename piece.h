@@ -39,6 +39,7 @@ struct GameState{
     bool current_side;
     QVector<Piece*> white;
     QVector<Piece*> black;
+    QVector<Move> done;
     void make_move(struct Move* m);
     void undo_move(struct Move* m);
 private:
