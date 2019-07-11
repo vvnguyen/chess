@@ -2,6 +2,7 @@
 
 Piece::~Piece(){};
 
+const unsigned int none = 31;
 void Pawn::generate_moves(QVector<Move>& moves, Board& board)
 {
     if(color==white){
@@ -10,7 +11,7 @@ void Pawn::generate_moves(QVector<Move>& moves, Board& board)
             Move m;
             m.from = on;
             m.to = field_up;
-            m.captured = 0;
+            m.captured = none;
             m.promoted = 0;
             moves.push_back(m);
             if((on/8)==1){//double move from rank 2
@@ -19,7 +20,7 @@ void Pawn::generate_moves(QVector<Move>& moves, Board& board)
                     Move m;
                     m.from = on;
                     m.to = field_double_up;
-                    m.captured = 0;
+                    m.captured = none;
                     m.promoted = 0;
                     moves.push_back(m);
                 }
@@ -61,7 +62,7 @@ void Pawn::generate_moves(QVector<Move>& moves, Board& board)
             Move m;
             m.from = on;
             m.to = field_down;
-            m.captured = 0;
+            m.captured = none;
             m.promoted = 0;
             moves.push_back(m);
             if((on/8)==6){
@@ -69,7 +70,7 @@ void Pawn::generate_moves(QVector<Move>& moves, Board& board)
                 if(board.fields[field_double_down]==nullptr){
                     m.from = on;
                     m.to = field_double_down;
-                    m.captured = 0;
+                    m.captured = none;
                     m.promoted = 0;
                     moves.push_back(m);
                 }
@@ -120,7 +121,7 @@ void Knight::generate_moves(QVector<Move>& moves, Board& board)
             Move m;
             m.from = on;
             m.to = move_to;
-            m.captured = 0;
+            m.captured = none;
             m.promoted = 0;
             moves.push_back(m);
         } else {
@@ -143,7 +144,7 @@ void Knight::generate_moves(QVector<Move>& moves, Board& board)
             Move m;
             m.from = on;
             m.to = move_to;
-            m.captured = 0;
+            m.captured = none;
             m.promoted = 0;
             moves.push_back(m);
         } else {
@@ -166,7 +167,7 @@ void Knight::generate_moves(QVector<Move>& moves, Board& board)
             Move m;
             m.from = on;
             m.to = move_to;
-            m.captured = 0;
+            m.captured = none;
             m.promoted = 0;
             moves.push_back(m);
         } else {
@@ -189,7 +190,7 @@ void Knight::generate_moves(QVector<Move>& moves, Board& board)
             Move m;
             m.from = on;
             m.to = move_to;
-            m.captured = 0;
+            m.captured = none;
             m.promoted = 0;
             moves.push_back(m);
         } else {
@@ -212,7 +213,7 @@ void Knight::generate_moves(QVector<Move>& moves, Board& board)
             Move m;
             m.from = on;
             m.to = move_to;
-            m.captured = 0;
+            m.captured = none;
             m.promoted = 0;
             moves.push_back(m);
         } else {
@@ -234,7 +235,7 @@ void Knight::generate_moves(QVector<Move>& moves, Board& board)
             Move m;
             m.from = on;
             m.to = move_to;
-            m.captured = 0;
+            m.captured = none;
             m.promoted = 0;
             moves.push_back(m);
         } else {
@@ -257,7 +258,7 @@ void Knight::generate_moves(QVector<Move>& moves, Board& board)
             Move m;
             m.from = on;
             m.to = move_to;
-            m.captured = 0;
+            m.captured = none;
             m.promoted = 0;
             moves.push_back(m);
         } else {
@@ -280,7 +281,7 @@ void Knight::generate_moves(QVector<Move>& moves, Board& board)
             Move m;
             m.from = on;
             m.to = move_to;
-            m.captured = 0;
+            m.captured = none;
             m.promoted = 0;
             moves.push_back(m);
         } else {
@@ -310,7 +311,7 @@ void Bishop::generate_moves(QVector<Move>& moves, Board& board)
         Move m;
         m.from = on;
         m.to = move_to;
-        m.captured = 0;
+        m.captured = none;
         m.promoted = 0;
         moves.push_back(m);
         move_to+=9;
@@ -334,7 +335,7 @@ void Bishop::generate_moves(QVector<Move>& moves, Board& board)
         Move m;
         m.from = on;
         m.to = move_to;
-        m.captured = 0;
+        m.captured = none;
         m.promoted = 0;
         moves.push_back(m);
         move_to+=7;
@@ -358,7 +359,7 @@ void Bishop::generate_moves(QVector<Move>& moves, Board& board)
         Move m;
         m.from = on;
         m.to = move_to;
-        m.captured = 0;
+        m.captured = none;
         m.promoted = 0;
         moves.push_back(m);
         move_to-=7;
@@ -382,7 +383,7 @@ void Bishop::generate_moves(QVector<Move>& moves, Board& board)
         Move m;
         m.from = on;
         m.to = move_to;
-        m.captured = 0;
+        m.captured = none;
         m.promoted = 0;
         moves.push_back(m);
         move_to-=9;
@@ -413,7 +414,7 @@ void Rook::generate_moves(QVector<Move>& moves, Board& board)
         Move m;
         m.from = on;
         m.to = move_to;
-        m.captured = 0;
+        m.captured = none;
         m.promoted = 0;
         moves.push_back(m);
         move_to+=8;
@@ -435,7 +436,7 @@ void Rook::generate_moves(QVector<Move>& moves, Board& board)
         Move m;
         m.from = on;
         m.to = move_to;
-        m.captured = 0;
+        m.captured = none;
         m.promoted = 0;
         moves.push_back(m);
         move_to-=8;
@@ -457,7 +458,7 @@ void Rook::generate_moves(QVector<Move>& moves, Board& board)
         Move m;
         m.from = on;
         m.to = move_to;
-        m.captured = 0;
+        m.captured = none;
         m.promoted = 0;
         moves.push_back(m);
         move_to-=1;
@@ -479,7 +480,7 @@ void Rook::generate_moves(QVector<Move>& moves, Board& board)
         Move m;
         m.from = on;
         m.to = move_to;
-        m.captured = 0;
+        m.captured = none;
         m.promoted = 0;
         moves.push_back(m);
         move_to+=1;
@@ -507,7 +508,7 @@ void King::generate_moves(QVector<Move>& moves, Board& board)
                 Move m;
                 m.from = on;
                 m.to = move_to;
-                m.captured = 0;
+                m.captured = none;
                 m.promoted = 0;
                 moves.push_back(m);
             } else if(board.fields[move_to]->color!=board.fields[on]->color){
@@ -525,7 +526,7 @@ void King::generate_moves(QVector<Move>& moves, Board& board)
             Move m;
             m.from = on;
             m.to = move_to;
-            m.captured = 0;
+            m.captured = none;
             m.promoted = 0;
             moves.push_back(m);
         } else if(board.fields[move_to]->color!=board.fields[on]->color){
@@ -543,7 +544,7 @@ void King::generate_moves(QVector<Move>& moves, Board& board)
                 Move m;
                 m.from = on;
                 m.to = move_to;
-                m.captured = 0;
+                m.captured = none;
                 m.promoted = 0;
                 moves.push_back(m);
             } else if(board.fields[move_to]->color!=board.fields[on]->color){
@@ -561,7 +562,7 @@ void King::generate_moves(QVector<Move>& moves, Board& board)
             Move m;
             m.from = on;
             m.to = move_to;
-            m.captured = 0;
+            m.captured = none;
             m.promoted = 0;
             moves.push_back(m);
         } else if(board.fields[move_to]->color!=board.fields[on]->color){
@@ -578,7 +579,7 @@ void King::generate_moves(QVector<Move>& moves, Board& board)
             Move m;
             m.from = on;
             m.to = move_to;
-            m.captured = 0;
+            m.captured = none;
             m.promoted = 0;
             moves.push_back(m);
         } else if(board.fields[move_to]->color!=board.fields[on]->color){
@@ -595,7 +596,7 @@ void King::generate_moves(QVector<Move>& moves, Board& board)
             Move m;
             m.from = on;
             m.to = move_to;
-            m.captured = 0;
+            m.captured = none;
             m.promoted = 0;
             moves.push_back(m);
         } else if(board.fields[move_to]->color!=board.fields[on]->color){
@@ -613,7 +614,7 @@ void King::generate_moves(QVector<Move>& moves, Board& board)
                 Move m;
                 m.from = on;
                 m.to = move_to;
-                m.captured = 0;
+                m.captured = none;
                 m.promoted = 0;
                 moves.push_back(m);
             } else if(board.fields[move_to]->color!=board.fields[on]->color){
@@ -632,7 +633,7 @@ void King::generate_moves(QVector<Move>& moves, Board& board)
                 Move m;
                 m.from = on;
                 m.to = move_to;
-                m.captured = 0;
+                m.captured = none;
                 m.promoted = 0;
                 moves.push_back(m);
             } else if(board.fields[move_to]->color!=board.fields[on]->color){
@@ -659,7 +660,7 @@ void Queen::generate_moves(QVector<Move>& moves, Board& board)
         Move m;
         m.from = on;
         m.to = move_to;
-        m.captured = 0;
+        m.captured = none;
         m.promoted = 0;
         moves.push_back(m);
         move_to+=9;
@@ -683,7 +684,7 @@ void Queen::generate_moves(QVector<Move>& moves, Board& board)
         Move m;
         m.from = on;
         m.to = move_to;
-        m.captured = 0;
+        m.captured = none;
         m.promoted = 0;
         moves.push_back(m);
         move_to+=7;
@@ -707,7 +708,7 @@ void Queen::generate_moves(QVector<Move>& moves, Board& board)
         Move m;
         m.from = on;
         m.to = move_to;
-        m.captured = 0;
+        m.captured = none;
         m.promoted = 0;
         moves.push_back(m);
         move_to-=7;
@@ -731,7 +732,7 @@ void Queen::generate_moves(QVector<Move>& moves, Board& board)
         Move m;
         m.from = on;
         m.to = move_to;
-        m.captured = 0;
+        m.captured = none;
         m.promoted = 0;
         moves.push_back(m);
         move_to-=9;
@@ -755,7 +756,7 @@ void Queen::generate_moves(QVector<Move>& moves, Board& board)
             Move m;
             m.from = on;
             m.to = move_to;
-            m.captured = 0;
+            m.captured = none;
             m.promoted = 0;
             moves.push_back(m);
             move_to+=8;
@@ -777,7 +778,7 @@ void Queen::generate_moves(QVector<Move>& moves, Board& board)
             Move m;
             m.from = on;
             m.to = move_to;
-            m.captured = 0;
+            m.captured = none;
             m.promoted = 0;
             moves.push_back(m);
             move_to-=8;
@@ -800,7 +801,7 @@ void Queen::generate_moves(QVector<Move>& moves, Board& board)
             Move m;
             m.from = on;
             m.to = move_to;
-            m.captured = 0;
+            m.captured = none;
             m.promoted = 0;
             moves.push_back(m);
             move_to-=1;
@@ -822,7 +823,7 @@ void Queen::generate_moves(QVector<Move>& moves, Board& board)
             Move m;
             m.from = on;
             m.to = move_to;
-            m.captured = 0;
+            m.captured = none;
             m.promoted = 0;
             moves.push_back(m);
             move_to+=1;
@@ -840,7 +841,7 @@ void Queen::generate_moves(QVector<Move>& moves, Board& board)
 }
 
 void GameState::make_move(Move* m){
-    if(m->captured){
+    if(m->captured!=none){
         this->b.fields[m->to]->in_game=false;
     }
     if(this->b.fields[m->from]==nullptr){
@@ -860,7 +861,7 @@ void GameState::undo_move(Move* m){
     this->b.fields[m->from] = this->b.fields[m->to];
     this->b.fields[m->from]->on = m->from;
     this->b.fields[m->to] = nullptr;
-    if(m->captured){
+    if(m->captured!=none){
         if(c==Piece::white){
             black[m->captured]->in_game=true;
             this->b.fields[m->to] = black[m->captured];
