@@ -50,16 +50,22 @@ void MainWindow::viewClicked(const QPoint &field)
     if(m_clickPoint.isNull()) {
         m_clickPoint = field;
     } else {
-    if(field != m_clickPoint) {
-        m_view->board()->movePiece(
-             m_clickPoint.x(), m_clickPoint.y(),
-            field.x(), field.y()
-        );
+        if(field != m_clickPoint) {
+            //Move white_move;
+            //white_move.from = m_clickPoint.x()-1+(m_clickPoint.y()-1)*8;
+            //white_move.to = field.x() -1 + (field.y()-1)*8;
+            //this->g.make_move(&white_move);
+            m_view->board()->movePiece(
+                 m_clickPoint.x(), m_clickPoint.y(),
+                field.x(), field.y()
+            );
 
-        //generate black moves
-        Move m;
-        alphabeta::find_best_move(&g,&m);
-    }
-    m_clickPoint = QPoint();
+            //generate black moves
+           Move black_move;
+           alphabeta::find_best_move(&g,&black_move);
+           this->g.make_move(&black_move);
+           m_view->board()->movePiece(black_move.from%8+1,black_move.from/8+1,black_move.to%8+1,black_move.to/8+1);
+        }
+        m_clickPoint = QPoint();
     }
 }

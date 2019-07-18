@@ -58,51 +58,57 @@ void Pawn::generate_moves(QVector<Move>& moves, Board& board)
         }
     }else{ //black pawn
         auto field_down = on-8;
-        if(board.fields[field_down]==nullptr){
-            Move m;
-            m.from = on;
-            m.to = field_down;
-            m.captured = none;
-            m.promoted = 0;
-            moves.push_back(m);
-            if((on/8)==6){
-                auto field_double_down = on-16;
-                if(board.fields[field_double_down]==nullptr){
-                    m.from = on;
-                    m.to = field_double_down;
-                    m.captured = none;
-                    m.promoted = 0;
-                    moves.push_back(m);
+        if(on>=8){
+            if(board.fields[field_down]==nullptr){
+                Move m;
+                m.from = on;
+                m.to = field_down;
+                m.captured = none;
+                m.promoted = 0;
+                moves.push_back(m);
+                if((on/8)==6){
+                    auto field_double_down = on-16;
+                    if(board.fields[field_double_down]==nullptr){
+                        m.from = on;
+                        m.to = field_double_down;
+                        m.captured = none;
+                        m.promoted = 0;
+                        moves.push_back(m);
+                    }
                 }
             }
         }
         //left down
-        if(on%8){
-            auto field_left_down = on-7;
-            auto piece_to_be_taken = board.fields[field_left_down];
-            if(piece_to_be_taken!=nullptr){
-                if(piece_to_be_taken->color==white){
-                    Move m;
-                    m.from = on;
-                    m.to = field_left_down;
-                    m.captured = piece_to_be_taken->id;
-                    m.promoted = 0;
-                    moves.push_back(m);
+        if((on%8)!=7){
+            if(on>=8){
+                auto field_left_down = on-7;
+                auto piece_to_be_taken = board.fields[field_left_down];
+                if(piece_to_be_taken!=nullptr){
+                    if(piece_to_be_taken->color==white){
+                        Move m;
+                        m.from = on;
+                        m.to = field_left_down;
+                        m.captured = piece_to_be_taken->id;
+                        m.promoted = 0;
+                        moves.push_back(m);
+                    }
                 }
             }
-        }
 
-        if((on%8)!=7){
-            auto field_right_down = on-9;
-            auto piece_to_be_taken = board.fields[field_right_down];
-            if(piece_to_be_taken!=nullptr){
-                if(piece_to_be_taken->color==white){
-                    Move m;
-                    m.from = on;
-                    m.to = field_right_down;
-                    m.captured = piece_to_be_taken->id;
-                    m.promoted = 0;
-                    moves.push_back(m);
+        }
+        if(on%8){
+            if(on>=9){
+                auto field_right_down = on-9;
+                auto piece_to_be_taken = board.fields[field_right_down];
+                if(piece_to_be_taken!=nullptr){
+                    if(piece_to_be_taken->color==white){
+                        Move m;
+                        m.from = on;
+                        m.to = field_right_down;
+                        m.captured = piece_to_be_taken->id;
+                        m.promoted = 0;
+                        moves.push_back(m);
+                    }
                 }
             }
         }
@@ -276,7 +282,7 @@ void Knight::generate_moves(QVector<Move>& moves, Board& board)
 
     //one right two up
     if((column<6)&&(row<6)){
-        auto move_to = on +18;
+        auto move_to = on +17;
         if(board.fields[move_to]==nullptr){
             Move m;
             m.from = on;
