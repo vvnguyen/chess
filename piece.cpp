@@ -7,52 +7,55 @@ void Pawn::generate_moves(QVector<Move>& moves, Board& board)
 {
     if(color==white){
         auto field_up = on+8;
-        if(board.fields[field_up]==nullptr){
-            Move m;
-            m.from = on;
-            m.to = field_up;
-            m.captured = none;
-            m.promoted = 0;
-            moves.push_back(m);
-            if((on/8)==1){//double move from rank 2
-                auto field_double_up = on+16;
-                if(board.fields[field_double_up]==nullptr){
-                    Move m;
-                    m.from = on;
-                    m.to = field_double_up;
-                    m.captured = none;
-                    m.promoted = 0;
-                    moves.push_back(m);
+        if(on<56){
+            if(board.fields[field_up]==nullptr){
+                Move m;
+                m.from = on;
+                m.to = field_up;
+                m.captured = none;
+                m.promoted = 0;
+                moves.push_back(m);
+                if((on/8)==1){//double move from rank 2
+                    auto field_double_up = on+16;
+                    if(board.fields[field_double_up]==nullptr){
+                        Move m;
+                        m.from = on;
+                        m.to = field_double_up;
+                        m.captured = none;
+                        m.promoted = 0;
+                        moves.push_back(m);
+                    }
                 }
             }
-        }
-        //left up
-        if(on%8){
-            auto field_left_up = on+7;
-            auto piece_to_be_taken = board.fields[field_left_up];
-            if(piece_to_be_taken!=nullptr){
-                if(piece_to_be_taken->color==black){
-                    Move m;
-                    m.from = on;
-                    m.to = field_left_up;
-                    m.captured = piece_to_be_taken->id;
-                    m.promoted = 0;
-                    moves.push_back(m);
+
+            //left up
+            if(on%8){
+                auto field_left_up = on+7;
+                auto piece_to_be_taken = board.fields[field_left_up];
+                if(piece_to_be_taken!=nullptr){
+                    if(piece_to_be_taken->color==black){
+                        Move m;
+                        m.from = on;
+                        m.to = field_left_up;
+                        m.captured = piece_to_be_taken->id;
+                        m.promoted = 0;
+                        moves.push_back(m);
+                    }
                 }
             }
-        }
-        //right up
-        if((on%8)!=7){
-            auto field_right_up = on+9;
-            auto piece_to_be_taken = board.fields[field_right_up];
-            if(piece_to_be_taken!=nullptr){
-                if(piece_to_be_taken->color==black){
-                    Move m;
-                    m.from = on;
-                    m.to = field_right_up;
-                    m.captured = piece_to_be_taken->id;
-                    m.promoted = 0;
-                    moves.push_back(m);
+            //right up
+            if((on%8)!=7){
+                auto field_right_up = on+9;
+                auto piece_to_be_taken = board.fields[field_right_up];
+                if(piece_to_be_taken!=nullptr){
+                    if(piece_to_be_taken->color==black){
+                        Move m;
+                        m.from = on;
+                        m.to = field_right_up;
+                        m.captured = piece_to_be_taken->id;
+                        m.promoted = 0;
+                        moves.push_back(m);
+                    }
                 }
             }
         }
