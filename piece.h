@@ -3,6 +3,7 @@
 #include <QVector>
 
 typedef unsigned int position_t;
+const unsigned int none = 31;
 
 struct Move{
     unsigned int from:8;

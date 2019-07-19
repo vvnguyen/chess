@@ -2,7 +2,6 @@
 
 Piece::~Piece(){};
 
-const unsigned int none = 31;
 void Pawn::generate_moves(QVector<Move>& moves, Board& board)
 {
     if(color==white){

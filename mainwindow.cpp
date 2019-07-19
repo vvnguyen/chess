@@ -51,10 +51,14 @@ void MainWindow::viewClicked(const QPoint &field)
         m_clickPoint = field;
     } else {
         if(field != m_clickPoint) {
-            //Move white_move;
-            //white_move.from = m_clickPoint.x()-1+(m_clickPoint.y()-1)*8;
-            //white_move.to = field.x() -1 + (field.y()-1)*8;
-            //this->g.make_move(&white_move);
+            Move white_move;
+            white_move.from = (m_clickPoint.y()-1)*8+m_clickPoint.x()-1;
+            white_move.to = (field.y()-1)*8 + field.x() -1;
+            white_move.captured = none;
+            if(g.b.fields[white_move.to]!=nullptr){
+                white_move.captured= g.b.fields[white_move.to]->id;
+            }
+            this->g.make_move(&white_move);
             m_view->board()->movePiece(
                  m_clickPoint.x(), m_clickPoint.y(),
                 field.x(), field.y()
