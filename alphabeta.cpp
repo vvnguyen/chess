@@ -22,7 +22,7 @@ int alphabeta::max(int alpha, int beta, int depthleft, GameState* game){
             alpha = score;
         }
     }
-    return 0;
+    return alpha;
 }
 
 int alphabeta::min(int alpha, int beta,int depthleft, GameState* game){
@@ -46,7 +46,7 @@ int alphabeta::min(int alpha, int beta,int depthleft, GameState* game){
         }
     }
 
-    return 0;
+    return beta;
 }
 
 void alphabeta::find_best_move(GameState* game, Move* best_move){
@@ -60,7 +60,7 @@ void alphabeta::find_best_move(GameState* game, Move* best_move){
     int index_best_move =0;
     int min = 10000;
     int i=0;
-    int alpha=0,beta=0;
+    int alpha=-10000,beta=10000;
     for(auto move: moves){
         Move m=move;
         game->make_move(&m);
@@ -70,6 +70,7 @@ void alphabeta::find_best_move(GameState* game, Move* best_move){
             index_best_move = i;
         }
         game->undo_move(&m);
+        ++i;
     }
     *best_move = moves[index_best_move];
 
