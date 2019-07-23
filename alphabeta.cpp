@@ -40,7 +40,7 @@ int alphabeta::min(int alpha, int beta,int depthleft, GameState* game){
         game->make_move(&m);
         auto score = alphabeta::max(alpha,beta,depthleft-1,game);
         game->undo_move(&m);
-        if( score < alpha ) return alpha;   // fail hard beta-cutoff
+        if( score <= alpha ) return alpha;   // fail hard beta-cutoff
         if( score < beta ) {
             beta = score;
         }
@@ -64,7 +64,7 @@ void alphabeta::find_best_move(GameState* game, Move* best_move){
     for(auto move: moves){
         Move m=move;
         game->make_move(&m);
-        auto score = alphabeta::max(alpha,beta,6,game);//not working properly
+        auto score = alphabeta::max(alpha,beta,5,game);//not working properly
         if(score<min){
             min = score;
             index_best_move = i;
