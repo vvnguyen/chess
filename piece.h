@@ -25,6 +25,7 @@ struct Piece
     bool in_game;
     int value;
     virtual void generate_moves(QVector<Move>& moves, Board& board)=0;
+    //virtual int mobility_value(struct Board& b, position_t position);
     virtual ~Piece()=0;
 }Piece;
 
@@ -55,24 +56,28 @@ struct Pawn: Piece
 {
     static const int pawn_value = 10;
     void generate_moves(QVector<Move>& moves, Board& board);
+    //int mobility_value(struct Board& b, position_t position);
 };
 
 struct Knight: Piece
 {
     static const int knight_value = 30;
     void generate_moves(QVector<Move>& moves, Board& board);
+    //int mobility_value(struct Board& b, position_t position);
 };
 
 struct Bishop: Piece
 {
     static const int bishop_value = 30;
     void generate_moves(QVector<Move>& moves, Board& board);
+    //int mobility_value(struct Board& b, position_t position);
 };
 
 struct Rook: Piece
 {
     static const int rook_value = 50;
     void generate_moves(QVector<Move>& moves, Board& board);
+    //int mobility_value(struct Board& b, position_t position);
 };
 
 struct King: Piece
@@ -80,12 +85,14 @@ struct King: Piece
     static const int king_value = 100;
     void generate_moves(QVector<Move>& moves, Board& board);
     bool is_safe(Board& board);
+    //int mobility_value(struct Board& b, position_t position);
 };
 
 struct Queen: Piece
 {
     static const int queen_value = 90;
     void generate_moves(QVector<Move>& moves, Board& board);
+    //int mobility_value(struct Board& b, position_t position);
 };
 
 #endif // PIECE_H

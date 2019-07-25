@@ -855,6 +855,16 @@ void Queen::generate_moves(QVector<Move>& moves, Board& board)
             moves.push_back(m);
         }
 }
+/*
+int Pawn::mobility_value(struct Board& b, position_t position) {
+    int value =0;
+    if(this->color==white){
+
+    } else {
+
+    }
+    return value;
+}*/
 
 void GameState::make_move(Move* m){
     if(m->captured!=none){
