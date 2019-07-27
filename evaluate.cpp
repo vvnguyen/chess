@@ -13,5 +13,17 @@ int evaluate(GameState* game){
         }
     }
 
-    return material_value;
+    int position_value=0;
+    for(int i=0;i<16;++i){
+        if(game->white[i]->in_game){
+            position_value += game->white[i]->mobility_value(game->b,game->white[i]->on);
+        }
+    }
+    for(int j=0;j<16;++j){
+        if(game->black[j]->in_game){
+            position_value -= game->black[j]->mobility_value(game->b,game->black[j]->on);
+        }
+    }
+
+    return material_value+position_value;
 }

@@ -2,6 +2,70 @@
 
 Piece::~Piece(){};
 
+const int Pawn::white_pawn_mobility_value[] = { 1,1,1,1,1,1,1,1,
+                                                1,1,1,1,1,1,1,1,
+                                                1,1,2,2,2,2,1,1,
+                                                1,1,2,2,2,2,1,1,
+                                                2,2,2,2,2,2,2,2,
+                                                2,2,2,2,2,2,2,2,
+                                                3,3,3,3,3,3,3,3,
+                                                3,3,3,3,3,3,3,3};
+
+const int Pawn::black_pawn_mobility_value[] = { 3,3,3,3,3,3,3,3,
+                                                3,3,3,3,3,3,3,3,
+                                                2,2,2,2,2,2,2,2,
+                                                2,2,2,2,2,2,2,2,
+                                                1,1,2,2,2,2,1,1,
+                                                1,1,2,2,2,2,1,1,
+                                                1,1,1,1,1,1,1,1,
+                                                1,1,1,1,1,1,1,1};
+
+const int Knight::knight_mobility_value[] = { 1,1,1,1,1,1,1,1,
+                                              1,2,2,2,2,2,2,1,
+                                              1,2,2,3,3,2,2,1,
+                                              1,2,3,3,3,3,2,1,
+                                              1,2,3,3,3,3,2,1,
+                                              1,2,2,3,3,2,2,1,
+                                              1,2,2,2,2,2,2,1,
+                                              1,1,1,1,1,1,1,1};
+
+const int Bishop::bishop_mobility_value[] = { 1,1,1,1,1,1,1,1,
+                                              1,2,2,2,2,2,2,1,
+                                              1,2,2,3,3,2,2,1,
+                                              1,2,3,3,3,3,2,1,
+                                              1,2,3,3,3,3,2,1,
+                                              1,2,2,3,3,2,2,1,
+                                              1,2,2,2,2,2,2,1,
+                                              1,1,1,1,1,1,1,1};
+
+int Pawn::mobility_value(struct Board& b, position_t position){
+    if(Pawn::color==white){
+        return white_pawn_mobility_value[position];
+    } else {
+        return black_pawn_mobility_value[position];
+    }
+}
+
+int Knight::mobility_value(struct Board &b, position_t position) {
+    return knight_mobility_value[position];
+}
+
+int Bishop::mobility_value(struct Board &b, position_t position) {
+    return bishop_mobility_value[position];
+}
+
+int Rook::mobility_value(struct Board &b, position_t position) {
+    return 1;
+}
+
+int Queen::mobility_value(struct Board &b, position_t position){
+    return 1;
+}
+
+int King::mobility_value(struct Board &b, position_t position) {
+    return 1;
+}
+
 void Pawn::generate_moves(QVector<Move>& moves, Board& board)
 {
     if(color==white){
