@@ -23,7 +23,6 @@ private:
     ChessView *m_view;
     GameAlgorithm *m_algorithm;
     QPoint m_clickPoint;
-    GameState g;
 public slots:
     void viewClicked(const QPoint &);
 };

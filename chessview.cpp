@@ -42,7 +42,7 @@ QSize ChessView::sizeHint() const
     QSize boardSize = QSize(fieldSize().width()
                             * m_board->columns()+1,
                             m_fieldSize.height()*m_board->ranks() +1);
-    int rankSize = fontMetrics().width('M')+4;
+    int rankSize = fontMetrics().maxWidth()+4;
     int columnSize = fontMetrics().height()+4;
     return boardSize+QSize(rankSize, columnSize);
 }
@@ -52,7 +52,7 @@ QRect ChessView::fieldRect(int column, int rank) const{
     const QSize fs = fieldSize();
     QRect fRect = QRect(QPoint((column-1)*fs.width(),
                                (m_board->ranks()-rank)*fs.height()), fs);
-    int offset = fontMetrics().width('M');
+    int offset = fontMetrics().maxWidth();
     // 'M' is the widest letter
     return fRect.translated(offset+4, 0);
 }
@@ -143,7 +143,7 @@ QPoint ChessView::fieldAt(const QPoint &pt) const
 {
     if(!m_board) return QPoint();
     const QSize fs = fieldSize();
-    int offset = fontMetrics().width('M')+4;
+    int offset = fontMetrics().maxWidth()+4;
     if(pt.x()<offset)return QPoint();
     int c = (pt.x()-offset)/fs.width();
     int r = pt.y()/fs.height();

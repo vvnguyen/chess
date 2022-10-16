@@ -8,7 +8,7 @@ int alphabeta::max(int alpha, int beta, int depthleft, GameState* game){
     QVector<Move> moves;
     for(int i=0;i<16;++i){
         if(game->white[i]->in_game){
-            game->white[i]->generate_moves(moves,game->b);
+            game->white[i]->generate_moves(moves);
         }
     }
 
@@ -17,7 +17,7 @@ int alphabeta::max(int alpha, int beta, int depthleft, GameState* game){
         game->make_move(&m);
         auto score=0;
         if(move.captured!=none){
-            score = alphabeta::min(alpha,beta,depthleft,game);
+            score = alphabeta::min(alpha,beta,depthleft-1,game);
         }else{
             score = alphabeta::min(alpha,beta,depthleft-1,game);
         }
@@ -36,7 +36,7 @@ int alphabeta::min(int alpha, int beta,int depthleft, GameState* game){
     QVector<Move> moves;
     for(int i=0;i<16;++i){
         if(game->black[i]->in_game){
-            game->black[i]->generate_moves(moves,game->b);
+            game->black[i]->generate_moves(moves);
         }
     }
 
@@ -45,7 +45,7 @@ int alphabeta::min(int alpha, int beta,int depthleft, GameState* game){
         game->make_move(&m);
         auto score=0;
         if(move.captured!=none){
-            score = alphabeta::max(alpha,beta,depthleft,game);
+            score = alphabeta::max(alpha,beta,depthleft-1,game);
         }else{
             score = alphabeta::max(alpha,beta,depthleft-1,game);
         }
@@ -63,7 +63,7 @@ void alphabeta::find_best_move(GameState* game, Move* best_move){
     QVector<Move> moves;
     for(int i=0;i<16;++i){
         if(game->black[i]->in_game){
-            game->black[i]->generate_moves(moves,game->b);
+            game->black[i]->generate_moves(moves);
         }
     }
 
@@ -73,7 +73,7 @@ void alphabeta::find_best_move(GameState* game, Move* best_move){
     for(auto move: moves){
         Move m=move;
         game->make_move(&m);
-        auto score = alphabeta::max(alpha,beta,1,game);//not working properly
+        auto score = alphabeta::max(alpha,beta,6,game);//not working properly
         if(score<beta){
             beta = score;
             index_best_move = i;
